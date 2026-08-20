@@ -3,7 +3,7 @@ import os
 
 INPUT_FILE = "gn-math.json"
 OUTPUT_FILE = "formatted_gn-math.json"
-ICONS_DIR = "media/icons/gn-math"
+ICONS_DIR = "assets/media/icons/gn-math"
 GAMES_DIR = "games"
 
 

@@ -1,8 +1,8 @@
 import json
 
 INPUT_FILE = "ugs.json"
-OUTPUT_FILE = "ugs.json"
-PLACEHOLDER_ICON = "images/icons/placeholder.png"
+OUTPUT_FILE = "ugs_formatted.json"
+PLACEHOLDER_ICON = "assets/media/icons/placeholder.png"
 
 def transform_json(input_path, output_path):
     with open(input_path, "r", encoding="utf-8") as f:
