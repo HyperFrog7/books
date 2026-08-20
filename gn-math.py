@@ -1,51 +1,26 @@
 import json
-import os
+import re
 
-INPUT_FILE = "gn-math.json"
-OUTPUT_FILE = "formatted_gn-math.json"
-ICONS_DIR = "assets/media/icons/gn-math"
-GAMES_DIR = "games"
+with open("gn-math.json", "r", encoding="utf-8") as f:
+    original_data = json.load(f)
 
+transformed_data = []
 
-def convert_gnmath():
-    if not os.path.exists(INPUT_FILE):
-        print(f"Error: {INPUT_FILE} not found.")
-        return
+for item in original_data:
+    item_id = str(item.get("id", ""))
 
-    with open(INPUT_FILE, "r", encoding="utf-8") as f:
-        try:
-            gnmath_data = json.load(f)
-        except json.JSONDecodeError as e:
-            print(f"Error reading {INPUT_FILE}: {e}")
-            return
+    cover_match = re.search(r"\/([^\/]+)$", item.get("cover", ""))
+    filename = cover_match.group(1) if cover_match else f"{item_id}.png"
 
-    new_data = []
+    new_entry = {
+        "name": item.get("name", ""),
+        "icon": f"assets/media/icons/gn-math/{filename}",
+        "file": f"gn-math/{item_id}.html"
+    }
 
-    for item in gnmath_data:
-        title = (item.get("name") or item.get("title") or "").strip()
-        raw_icon = item.get("icon") or item.get("image") or ""
-        raw_file = item.get("file") or item.get("url") or item.get("path") or ""
+    transformed_data.append(new_entry)
 
-        icon_filename = os.path.basename(raw_icon) if raw_icon else ""
-        file_filename = os.path.basename(raw_file) if raw_file else ""
+with open("converted_gn-math.json", "w", encoding="utf-8") as f:
+    json.dump(transformed_data, f, indent=2)
 
-        entry = {
-            "name": title,
-            "icon": (
-                f"{ICONS_DIR}/{icon_filename}" if icon_filename else ""
-            ),
-            "file": (
-                f"{GAMES_DIR}/{file_filename}" if file_filename else ""
-            ),
-        }
-
-        new_data.append(entry)
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(new_data, f, indent=2)
-
-    print(f"Done! Created {OUTPUT_FILE} with {len(new_data)} items.")
-
-
-if __name__ == "__main__":
-    convert_gnmath()
+print("Conversion complete! Output saved to converted_gn-math.json")
