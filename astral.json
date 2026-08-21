@@ -6,12 +6,12 @@
   },
   {
     "name": "Geometry Dash",
-    "icon": "assets/images/icons/geometry-dash.png",
+    "icon": "assets/media/icons/geometry-dash.png",
     "file": "astral/geometry-dash.html"
   },
   {
     "name": "Brotato",
-    "icon": "assets/images/icons/brotato.jpg",
+    "icon": "assets/media/icons/brotato.jpg",
     "file": "astral/brotato.html"
   }
 ]
