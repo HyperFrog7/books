@@ -2,16 +2,16 @@
   {
     "name": "Eaglercraft 1.12.2",
     "icon": "assets/media/icons/eagler1-12-2.png",
-    "file": "games/eagler1-12-2.html"
+    "file": "astral/eagler1-12-2.html"
   },
   {
     "name": "Geometry Dash",
     "icon": "assets/images/icons/geometry-dash.png",
-    "file": "games/geometry-dash.html"
+    "file": "astral/geometry-dash.html"
   },
   {
     "name": "Brotato",
     "icon": "assets/images/icons/brotato.jpg",
-    "file": "games/brotato.html"
+    "file": "astral/brotato.html"
   }
 ]
